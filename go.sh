@@ -85,6 +85,7 @@ go_install_fixit() {
   go_status $?
 
   rm -rf $FIXIT_SRC
+  mkdir -p $(dirname $FIXIT_SRC)
   ln -s "$HUGO_CACHE_DIR/FixIt-$FIXIT_VER" "$FIXIT_SRC"
 }
 
