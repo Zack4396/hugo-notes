@@ -1,0 +1,5 @@
+.cache/*
+mysite/assets/jsconfig.json
+mysite/.hugo_build.lock
+mysite/public/*
+mysite/resources/_gen/*
