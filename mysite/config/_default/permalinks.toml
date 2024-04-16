@@ -1,0 +1,11 @@
+# Refs to https://github.com/hugo-fixit/docs/blob/main/config/_default/permalinks.toml
+
+# -------------------------------------------------------------------------------------
+# Permalinks Configuration | Permalinks 配置
+# See: https://gohugo.io/content-management/urls/#permalinks
+# -------------------------------------------------------------------------------------
+
+# posts = ":year/:month/:filename"
+documentation = ":sections[0:]/:slugorfilename"
+faq = "faq/:slugorfilename"
+guides = "guides/:slugorfilename"

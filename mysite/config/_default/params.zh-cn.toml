@@ -1,0 +1,24 @@
+# Refs to https://github.com/hugo-fixit/docs/blob/main/config/_default/params.zh-cn.toml
+
+# -------------------------------------------------------------------------------------
+# Theme Core Configuration | 主题核心配置
+# See: https://fixit.lruihao.cn/zh-cn/documentation/basics/#theme-configuration
+# -------------------------------------------------------------------------------------
+
+description = "工作记录 - 某人"
+
+[gitInfo]
+  dir = "content/zh-cn"
+
+[author]
+  name = "Somebody"
+  email = ""
+  link = ""
+  avatar = "/images/avatar.png"
+
+[home]
+  [home.profile]
+    subtitle = "哈喽 👋, 整点甜甜圈吃吃吧"
+
+[watermark]
+  content = '<img class="fixit-icon" src="/images/hugo-somebody.webp" alt="FixIt logo" /> Someone work notes'

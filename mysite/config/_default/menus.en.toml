@@ -1,0 +1,56 @@
+# Refs to https://github.com/hugo-fixit/docs/blob/main/config/_default/menus.en.toml
+
+# -------------------------------------------------------------------------------------
+# Menu Configuration | 菜单配置
+# See: https://fixit.lruihao.cn/documentation/basics/#menu-configuration
+# -------------------------------------------------------------------------------------
+
+[[main]]
+  identifier = "documentation"
+  name = "Docs"
+  url = "/categories/documentation/"
+  title = "Documentation"
+  weight = 1
+  [main.params]
+    icon = "fa-regular fa-newspaper"
+
+[[main]]
+  identifier = "roadmap"
+  name = "roadmap"
+  url = "/categories/roadmap/"
+  title = "Personal learning roadmap"
+  weight = 2
+  [main.params]
+    icon = "fa-solid fa-map-location-dot"
+
+[[main]]
+  identifier = "archives"
+  name = "Archives"
+  url = "archives/"
+  weight = 10
+  [main.params]
+    icon = "fa-solid fa-archive"
+[[main]]
+  identifier = "categories"
+  parent = "archives"
+  name = "Categories"
+  url = "categories/"
+  weight = 11
+  [main.params]
+    icon = "fa-solid fa-folder-tree"
+[[main]]
+  identifier = "collections"
+  parent = "archives"
+  name = "Collections"
+  url = "collections/"
+  weight = 12
+  [main.params]
+    icon = "fa-solid fa-layer-group"
+[[main]]
+  identifier = "tags"
+  parent = "archives"
+  name = "Tags"
+  url = "tags/"
+  weight = 13
+  [main.params]
+    icon = "fa-solid fa-tags"

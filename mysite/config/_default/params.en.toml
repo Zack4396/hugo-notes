@@ -1,0 +1,22 @@
+# Refs to https://github.com/hugo-fixit/docs/blob/main/config/_default/params.en.toml
+
+# -------------------------------------------------------------------------------------
+# Theme Core Configuration | 主题核心配置
+# See: https://fixit.lruihao.cn/documentation/basics/#theme-configuration
+# -------------------------------------------------------------------------------------
+
+[gitInfo]
+  dir = "content/en"
+
+[author]
+  name = "Somebody"
+  email = ""
+  link = ""
+  avatar = "/images/avatar.png"
+
+[home]
+  [home.profile]
+    subtitle = "Hello 👋, How about indulging in some donuts"
+
+[watermark]
+  content = '<img class="fixit-icon" src="/images/hugo-somebody.webp" alt="FixIt logo" /> Someone work notes'

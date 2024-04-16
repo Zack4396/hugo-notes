@@ -1,0 +1,8 @@
+# Copied from https://github.com/hugo-fixit/docs/blob/main/config/_default/frontmatter.toml
+
+# -------------------------------------------------------------------------------------
+# Front Matter Configuration | Front Matter 配置
+# See: https://gohugo.io/getting-started/configuration/#configure-front-matter
+# -------------------------------------------------------------------------------------
+
+lastmod = ["lastmod", ":git", ":fileModTime", ":default"]

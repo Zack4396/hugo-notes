@@ -1,0 +1,13 @@
+# Copied to https://github.com/hugo-fixit/docs/blob/main/config/_default/outputFormats.toml
+
+# -------------------------------------------------------------------------------------
+# Output Format Definitions | 输出格式定义
+# See: https://gohugo.io/templates/output-formats/#output-format-definitions
+# -------------------------------------------------------------------------------------
+
+# Options to make output .md files
+# 用于输出 Markdown 格式文档的设置
+[MarkDown]
+  mediaType = "text/markdown"
+  isPlainText = true
+  isHTML = false
