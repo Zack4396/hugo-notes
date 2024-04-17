@@ -1,8 +1,15 @@
 #!/bin/bash
 
-readonly FIXIT_VER="0.3.2"
-readonly HUGO_CACHE_DIR="$HOME/.cache"
 readonly CUR_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+readonly HUGO_CACHE_DIR="$HOME/.cache"
+
+readonly FIXIT_VER="0.3.2"
+readonly FIXIT_PATH="$CUR_DIR/.cache/FixIt"
+
+readonly HUGO_VER="0.122.0"
+readonly HUGO_PATH=hugo
+
+readonly HUGO_SOURCE="$CUR_DIR/mysite"
 
 go_status() {
   [ "$1" -eq 0 ] && echo "okay" || echo "failed"
@@ -40,6 +47,24 @@ go_install_hugo() {
     exit 1
   fi
 
+  STABLE_URL="https://github.com/gohugoio/hugo/releases/download/v${HUGO_VER}/hugo_extended_${HUGO_VER}_linux-amd64.deb"
+  if [ "$STABLE_URL" != "$LATEST_URL" ]; then
+    read -p "Hugo has new version. Do you want to force update to latest version? (y/n): " choice
+    case "$choice" in
+      y|Y)
+        USE_LATEST_HUGO=true
+        ;;
+      n|N)
+        USE_LATEST_HUGO=false
+        LATEST_URL=$STABLE_URL
+        ;;
+      * )
+        echo "Invalid choice. Exiting"
+        exit 1
+        ;;
+    esac
+  fi
+
   ARCHIVE_FILE="$HUGO_CACHE_DIR/$(basename $LATEST_URL)"
   if ! [ -f "$ARCHIVE_FILE" ]; then
     echo -n "Downloading Hugo deb: "
@@ -53,9 +78,7 @@ go_install_hugo() {
 }
 
 go_install_fixit() {
-  FIXIT_SRC="$CUR_DIR/.cache/FixIt"
-
-  if [ -L "$FIXIT_SRC" -a -e "$FIXIT_SRC" ]; then
+  if [ -L "$FIXIT_PATH" -a -e "$FIXIT_PATH" ]; then
     read -p "FixIt is already installed. Do you want to force reinstall? (y/n): " choice
     case "$choice" in
       y|Y )
@@ -84,20 +107,19 @@ go_install_fixit() {
   unzip -q -o -d"$HUGO_CACHE_DIR/" $ARCHIVE_FILE
   go_status $?
 
-  rm -rf $FIXIT_SRC
-  mkdir -p $(dirname $FIXIT_SRC)
-  ln -s "$HUGO_CACHE_DIR/FixIt-$FIXIT_VER" "$FIXIT_SRC"
+  rm -rf $FIXIT_PATH
+  mkdir -p $(dirname $FIXIT_PATH)
+  ln -s "$HUGO_CACHE_DIR/FixIt-$FIXIT_VER" "$FIXIT_PATH"
 }
 
 go_run_hugo() {
-  HUGO_SOURCE="$CUR_DIR/mysite"
-
   rm -rf "$HUGO_SOURCE/public"
 
   hugo server -D \
     --source "$HUGO_SOURCE" \
-    --bind 127.0.0.1 \
-    --port 1313
+    --themesDir $(dirname $FIXIT_PATH)
+    --bind 10.28.18.199 \
+    --port 8000
 }
 
 main() {
