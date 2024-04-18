@@ -5,7 +5,7 @@
 # See: https://gohugo.io/content-management/urls/#permalinks
 # -------------------------------------------------------------------------------------
 
-# posts = ":year/:month/:filename"
+posts = ":year/:month/:filename"
 documentation = ":sections[0:]/:slugorfilename"
 faq = "faq/:slugorfilename"
 guides = "guides/:slugorfilename"

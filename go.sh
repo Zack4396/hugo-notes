@@ -21,6 +21,25 @@ go_usage() {
   echo "  --install_hugo    Install the hugo extended deb"
   echo "  --install_fixit   Install the hugo theme - FixIt"
   echo "  --run             Run the hugo blog"
+  echo "  --hugo            Mock hugo cmd"
+  echo "    e.g."
+  echo "    [*] hugo new documentation"
+  echo "      ./go.sh --hugo new documentation/xxx.md"
+  echo "    [*] hugo new posts"
+  echo "      ./go.sh --hugo new posts/xxx.md"
+  echo "    [*] hugo"
+  echo "      ./go.sh --hugo"
+  echo ""
+  echo "  --help, -h        Show this help message"
+}
+
+go_install_hugo() {
+  if [ -x "$(command -v hugo)" ]; then
+    read -p "Hugo is already installed. Do you want to force reinstall? (y/n): " choice
+    case "$choice" in
+      y|Y )
+        FORCE_INSTALL=true
+  echo ""
   echo "  --help, -h        Show this help message"
 }
 
@@ -117,9 +136,14 @@ go_run_hugo() {
 
   hugo server -D \
     --source "$HUGO_SOURCE" \
+    --themesDir $(dirname $FIXIT_PATH) \
+    --disableFastRender
+}
+
+go_hugo() {
+  hugo "$@" \
+    --source "$HUGO_SOURCE" \
     --themesDir $(dirname $FIXIT_PATH)
-    --bind 10.28.18.199 \
-    --port 8000
 }
 
 main() {
@@ -138,6 +162,10 @@ main() {
       ;;
     --run)
       go_run_hugo
+      ;;
+    --hugo)
+      shift 1
+      go_hugo "$@"
       ;;
     *)
       echo "Unknown option: $1"
