@@ -39,16 +39,6 @@ go_install_hugo() {
     case "$choice" in
       y|Y )
         FORCE_INSTALL=true
-  echo ""
-  echo "  --help, -h        Show this help message"
-}
-
-go_install_hugo() {
-  if [ -x "$(command -v hugo)" ]; then
-    read -p "Hugo is already installed. Do you want to force reinstall? (y/n): " choice
-    case "$choice" in
-      y|Y )
-        FORCE_INSTALL=true
         ;;
       n|N )
         return
